@@ -9,7 +9,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item, index) in items[date.props.getDate()]" :key="index">
+          <tr v-for="(item, index) in items[date.props.getDate()%3]" :key="index">
             <td>{{ item.amount }}</td>
             <td>{{ item.purpose }}</td>
             <td>
@@ -18,16 +18,12 @@
           </tr>
         </tbody>
       </table>
-      <p>{{ date.props.getDate() }}</p> <!-- Display the date prop -->
     </div>
   </template>
   
   <script setup>
-  import { ref } from 'vue';
-
-
-//   const currDate = ref();
-  
+  import { reactive, ref } from 'vue';
+    
   const props = defineProps({
     date: {
       type: Date,
@@ -35,16 +31,14 @@
     },
   });
   
-  const items = ref([
+
+  const items = reactive([
     [{ amount: 200, purpose: 'Office Supplies', tag: 'Business' },
-    { amount: 200, purpose: 'Lunch', tag: 'Personal' },
     { amount: 4500, purpose: 'Equipment', tag: 'Business' },
     { amount: 300, purpose: 'Books', tag: 'Education' },
     { amount: 100, purpose: 'Gym', tag: 'Health' },],
     [{ amount: 300, purpose: 'Office Supplies', tag: 'Business' },
     { amount: 200, purpose: 'Lunch', tag: 'Personal' },
-    { amount: 4500, purpose: 'Equipment', tag: 'Business' },
-    { amount: 300, purpose: 'Books', tag: 'Education' },
     { amount: 100, purpose: 'Gym', tag: 'Health' },],
     [{ amount: 400, purpose: 'Office Supplies', tag: 'Business' },
     { amount: 200, purpose: 'Lunch', tag: 'Personal' },

@@ -9,8 +9,6 @@
 import { defineProps } from 'vue';
 import ExpenseTable from './ExpenseTable.vue';
 
-
-
 const props = defineProps({
   props: {
     type: Date,
